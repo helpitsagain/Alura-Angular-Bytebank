@@ -16,7 +16,7 @@ export class NovaTransferenciaComponent {
   transferir(){
       console.log(`Solicitada nova transferência.`);
       if (this.validarTransferencia()){
-        this.aoTransferir.emit({valor: this.valor, destino: this.destino})
+        this.aoTransferir.emit({valor: this.valor, destino: this.destino});
         this.limparFormulario();
       }
   }
@@ -28,10 +28,8 @@ export class NovaTransferenciaComponent {
 
   private validarTransferencia(): boolean{
     const valorValido = this.valor > 0;
-    const destinoValido = this.destino > 0;
-    if (!valorValido || !destinoValido){
-      this.valorInvalido.emit("Valores inválidos.")
-      this.valorInvalido.emit("Ambos os campos precisam ser preenchidos\ncom números inteiros positivos maiores que zero.")
+    if (!valorValido){
+      this.valorInvalido.emit("Valor inválido.")
       this.limparFormulario();
     }
     return true;
